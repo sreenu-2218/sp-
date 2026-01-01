@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robotics Fundamentals</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    body {
+        margin: 0;
+        font-family: 'Roboto', sans-serif;
+        background: #f9f9f9;
+        color: #333;
+        overflow-x: hidden;
+    }
+
+    /* Side Navbar */
+    .sidenav {
+        height: 200%;
+        width: 220px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color:#fff;
+        border-right: 1px solid #ddd;
+        overflow-x: hidden;
+        padding-top: 20px;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+    }
+
+    .sidenav a {
+        display: block;
+        color: #555;
+        padding: 12px 20px;
+        text-decoration: none;
+        transition: 0.3s;
+        border-left: 3px solid transparent;
+    }
+
+    .sidenav a:hover {
+        color: #1e90ff;
+        border-left: 3px solid #1e90ff;
+        background-color: #f1f1f1;
+    }
+
+    /* Main content */
+    .main {
+        margin-left: 240px;
+        padding: 20px 40px;
+        background-image: url("https://media.istockphoto.com/id/1026437182/vector/glowing-brain-and-circuit-board-background.jpg?s=612x612&w=0&k=20&c=HHEHD9-H1d6HE51Fe0hiNv7OWVaa4YkFnJCOpSAC5Uo=");
+        height: 100%;
+        width: 75%;
+        
+    }
+
+    h1, h2 {
+        color: #1e90ff;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+        from { text-shadow: 0 0 5px #1e90ff, 0 0 10px #1e90ff; }
+        to { text-shadow: 0 0 20px #1e90ff, 0 0 40px #1e90ff; }
+    }
+
+    section {
+        background: #fff;
+        padding: 30px;
+        margin-bottom: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        opacity: 0;
+        transform: translateY(50px);
+        animation: fadeInUp 1s forwards;
+    }
+
+    section:nth-child(2){animation-delay:0.2s;}
+    section:nth-child(3){animation-delay:0.4s;}
+    section:nth-child(4){animation-delay:0.6s;}
+    section:nth-child(5){animation-delay:0.8s;}
+    section:nth-child(6){animation-delay:1s;}
+    section:nth-child(7){animation-delay:1.2s;}
+    section:nth-child(8){animation-delay:1.4s;}
+    section:nth-child(9){animation-delay:1.6s;}
+    section:nth-child(10){animation-delay:1.8s;}
+
+    @keyframes fadeInUp {
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    p {
+        line-height: 1.6;
+        margin-bottom: 10px;
+    }
+
+    ul {
+        margin-left: 20px;
+        margin-bottom: 10px;
+    }
+
+    /* Background floating images */
+    .bg-img {
+        position: absolute;
+        opacity: 0.1;
+        animation: float 20s infinite ease-in-out alternate;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0) rotate(0deg);}
+        50% { transform: translateY(-50px) rotate(15deg);}
+        100% { transform: translateY(0) rotate(0deg);}
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+    .button-1{
+        height: 30px;
+        width: 80px;
+        background-color: rgb(81, 233, 81);
+        border-radius: 20px;
+        margin-left: 850px;
+        cursor: pointer;
+        border-color:rgb(81, 233, 81);
+    }
+    .ir{
+        height: 200px;
+        width: 350px;
+        padding-left: 10px;
+        margin-bottom: 30px;
+    }
+    .mc{
+        height: 200px;
+        width: 250px;
+         padding-left: 20px;
+    }
+</style>
+</head>
+<body>
+
+<!-- Side Navbar -->
+<div class="sidenav">
+    <img src="https://static.vecteezy.com/system/resources/thumbnails/062/013/259/small_2x/modern-logo-design-showcasing-a-humanoid-robotics-technology-concept-featuring-a-sleek-and-minimalistic-blue-and-white-color-scheme-with-futuristic-elements-free-vector.jpg" 
+    height="70px" width="100px" padding-left="15px">
+    <a href="#intro">Introduction</a>
+    <a href="#types">Sensors (IR Sensors)</a>
+    <a href="#components">Microcontroller</a>
+    <a href="#sensors">Motor Driver (L293D / L298N)</a>
+    <a href="#actuators">DC Motors and Wheels</a>
+    <a href="#control">Programming</a>
+    <a href="#kinematics">Kinematics</a>
+    <a href="#dynamics">Dynamics</a>
+    <a href="#programming">Programming</a>
+    <a href="#applications">Applications</a>
+    <a href="#video lectures">video lecture</a>
+</div>
+
+<!-- Main Content -->
+<div class="main">
+    <h1>Obstacle Avoiding Robot</h1>
+
+    <section id="intro">
+        <h2>Introduction</h2>
+        <p> An Obstacle Avoiding Robot is an autonomous mobile robot designed to detect obstacles in its path and avoid collisions without human intervention. It uses sensors to measure the distance to nearby objects and a control system to decide safe movement directions. Obstacle avoiding robots are widely used in autonomous vehicles, service robots, industrial automation, and intelligent navigation systems.</p>
+    </section>
+
+    <section id="types">
+        <h2>Sensors (IR Sensors)</h2>
+        <p>Robots are classified based on structure, motion, application, and autonomy.</p>
+        <ul>
+            <li>
+            <p>IR (Infrared) sensors are used to detect the line. They work on the principle of reflection of infrared light. A white surface reflects more light, while a black surface absorbs it. The sensor output changes based on the surface color, helping the robot identify the path.</p>
+            <imG src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTeGYxMnsNXPnDzTvPiylvBlY2S76z5wg0-EIgXK1UN51lMj52V3ZO-BlZyv-eQm_N_sh6mOmkX5If-6ffD1bD--iUHenP20nD6ZLSKsKtj45xhOF4bt4LkWcMyR3lDOG9GFiuxX8bJgrA&usqp=CAc"/>
+            <img src="https://circuitdigest.com/sites/default/files/circuitdiagram_mic/Line-Follower-Circuit-Diagram.png" class="ir"/>
+            </li>
+        </ul>
+
+    </section>
+
+    <section id="components">
+        <h2>Microcontroller</h2>
+        <ul>
+            <li>
+                <p>
+                    A microcontroller (such as Arduino, PIC, or ESP32) acts as the brain of the robot. It reads sensor data, processes it using a programmed logic, and sends control signals to the motors to follow the line accurately.
+                </p>
+                <img src="https://i.all3dp.com/workers/images/fit=scale-down,w=1200,h=630,gravity=0.5x0.5,format=jpeg/wp-content/uploads/2021/11/16175442/pro-micro-microcontroller-board-pk0001-via-wikimedia-commons-211116.jpg" 
+                class="mc"/>
+                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20250501152116058488/microcontroller.webp" class="mc"/>
+                <img src="https://circuitdigest.com/sites/default/files/projectimage_mic/Line-Follower-Robot-Using-AVR-Microcontroller-ATmega16.jpg" class="mc"/>
+            </li>
+        </ul>
+    </section>
+
+
+    <section id="sensors">
+        <h2>Motor Driver (L293D / L298N)</h2>
+        <p></p>
+        <ul>
+            <li>
+                <p>Motor drivers are used because a microcontroller cannot supply enough current to run motors directly. The motor driver controls the speed and direction of the DC motors based on signals from the controller.</p>
+            </li>
+            <img src="https://www.flyrobo.in/image/cache/wp/gJ/product/l293d-motor-drive-module-550x550.webp" class="mc"/>
+            <img src="https://m.media-amazon.com/images/I/51xFy+AbINL.jpg" class="mc"/>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5lg1P61PNZ4KSsA8Om0CxF0IcmKqUIRurgw&s" class="mc"/>
+        </ul>
+    </section>
+
+    <section id="actuators">
+        <h2>DC Motors and Wheels</h2>
+       
+        <ul>
+            
+            <li>
+                <p>DC motors provide the mechanical movement required for the robot. By controlling the speed of the left and right motors independently, the robot can move forward, turn left, or turn right to stay on the line.</p>
+                <img src="https://roboindia.com/wp-content/uploads/2016/12/41Q-IrArcOL.jpg" class="mc"/>
+                <img src="https://www.flyrobo.in/image/cache/catalog/4-dc-200rpm-3-6v-bo-gear-motor-with-4-plastic-tire-wheel-combo/4-dc-200rpm-3-6v-bo-gear-motor-with-4-plastic-tire-wheel-combo1-550x550.jpg" class="mc"/>
+                <img src="https://a.pololu-files.com/picture/0J6312.1200.jpg?76da68937096751acf50274d8c25f3b4" class="mc"/>
+            </li>
+        </ul>
+    </section>
+
+   
+
+    <section id="kinematics">
+        <h2>Control Logic / Algorithm</h2>
+        
+        <ul>
+            <li>
+                <p>The control logic defines how the robot reacts to sensor inputs. If the line is detected on the left, the robot turns left; if detected on the right, it turns right; if detected in the center, it moves forward. This logic is implemented using programming.</p>
+            </li>
+        </ul>
+    </section>
+
+
+        
+
+    <section id="programming">
+        <h2>Programming</h2>
+        <p>Robots are programmed to perform tasks autonomously.</p>
+        <ul>
+            <li><strong>Languages:</strong> Python, C++, Java, MATLAB.</li>
+            <li><strong>Frameworks:</strong> ROS (Robot Operating System), V-REP, Gazebo for simulation.</li>
+            <li><strong>Algorithms:</strong> Path planning, motion control, AI, computer vision.</li>
+        </ul>
+    </section>
+
+   
+    <section id="video lectures">
+        <h2>video lectures</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/kPSBpfUpHt0?si=JFMl3v25rpWezFcz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </section>
+    <button class="button-1" onclick="location.href='Robotics Home.html' " >
+        Home
+    </button>
+</div>
+
+
+<!-- Background Floating Robot Images -->
+<img src="https://cdn-icons-png.flaticon.com/512/391/391005.png" class="bg-img" style="top:100px; left:600px; width:150px; animation-duration:18s;">
+
+
+</body>
+</html>

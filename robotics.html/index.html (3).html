@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robotics Fundamentals</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    body {
+        margin: 0;
+        font-family: 'Roboto', sans-serif;
+        background: #f9f9f9;
+        color: #333;
+        overflow-x: hidden;
+    }
+
+    /* Side Navbar */
+    .sidenav {
+        height: 200%;
+        width: 220px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color:#fff;
+        border-right: 1px solid #ddd;
+        overflow-x: hidden;
+        padding-top: 20px;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+    }
+
+    .sidenav a {
+        display: block;
+        color: #555;
+        padding: 12px 20px;
+        text-decoration: none;
+        transition: 0.3s;
+        border-left: 3px solid transparent;
+    }
+
+    .sidenav a:hover {
+        color: #1e90ff;
+        border-left: 3px solid #1e90ff;
+        background-color: #f1f1f1;
+    }
+
+    /* Main content */
+    .main {
+        margin-left: 240px;
+        padding: 20px 40px;
+        background-image: url("https://media.istockphoto.com/id/1026437182/vector/glowing-brain-and-circuit-board-background.jpg?s=612x612&w=0&k=20&c=HHEHD9-H1d6HE51Fe0hiNv7OWVaa4YkFnJCOpSAC5Uo=");
+        height: 100%;
+        width: 75%;
+        
+    }
+
+    h1, h2 {
+        color: #1e90ff;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+        from { text-shadow: 0 0 5px #1e90ff, 0 0 10px #1e90ff; }
+        to { text-shadow: 0 0 20px #1e90ff, 0 0 40px #1e90ff; }
+    }
+
+    section {
+        background: #fff;
+        padding: 30px;
+        margin-bottom: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        opacity: 0;
+        transform: translateY(50px);
+        animation: fadeInUp 1s forwards;
+    }
+
+    section:nth-child(2){animation-delay:0.2s;}
+    section:nth-child(3){animation-delay:0.4s;}
+    section:nth-child(4){animation-delay:0.6s;}
+    section:nth-child(5){animation-delay:0.8s;}
+    section:nth-child(6){animation-delay:1s;}
+    section:nth-child(7){animation-delay:1.2s;}
+    section:nth-child(8){animation-delay:1.4s;}
+    section:nth-child(9){animation-delay:1.6s;}
+    section:nth-child(10){animation-delay:1.8s;}
+
+    @keyframes fadeInUp {
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    p {
+        line-height: 1.6;
+        margin-bottom: 10px;
+    }
+
+    ul {
+        margin-left: 20px;
+        margin-bottom: 10px;
+    }
+
+    /* Background floating images */
+    .bg-img {
+        position: absolute;
+        opacity: 0.1;
+        animation: float 20s infinite ease-in-out alternate;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0) rotate(0deg);}
+        50% { transform: translateY(-50px) rotate(15deg);}
+        100% { transform: translateY(0) rotate(0deg);}
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+    .button-1{
+        height: 30px;
+        width: 80px;
+        background-color: rgb(81, 233, 81);
+        border-radius: 20px;
+        margin-left: 850px;
+        cursor: pointer;
+        border-color:rgb(81, 233, 81);
+        
+    }
+</style>
+</head>
+<body>
+
+<!-- Side Navbar -->
+<div class="sidenav">
+    <img src="https://static.vecteezy.com/system/resources/thumbnails/062/013/259/small_2x/modern-logo-design-showcasing-a-humanoid-robotics-technology-concept-featuring-a-sleek-and-minimalistic-blue-and-white-color-scheme-with-futuristic-elements-free-vector.jpg" 
+    height="70px" width="100px" padding-left="15px">
+    <a href="#intro">Introduction</a>
+    <a href="#components">Frame&Aerodynamics</a>
+    <a href="#sensors">Motors & Propulsion System</a>
+    <a href="#actuators">Flight Controller (The Brain)</a>
+    <a href="#control">Sensors in Drones</a>
+    <a href="#kinematics">Power System</a>
+    <a href="#dynamics">Communication Systems</a>
+    <a href="#programming">Navigation & Control Algorithms</a>
+    <a href="#applications">Computer Vision & AI</a>
+    <a href="#video lectures">Stabilization & PID Control</a>
+     <a href="#video lectures">Safety Systems</a>
+      <a href="#video lectures">Applications in Robotics
+</a>
+       <a href="#video lectures">video lectures
+</a>
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- Main Content -->
+<div class="main">
+    <h1>Drones & Technology</h1>
+
+    <section id="intro">
+        <h2>Introduction</h2>
+        <p>Drone technology (also called UAV – Unmanned Aerial Vehicle) is a major branch of Robotics and Automation where robots are designed to fly autonomously or semi-autonomously using sensors, microcontrollers, communication systems, and AI.</p>
+        <p>A drone = robot + flying mechanism.</p>
+    <p>
+            Drones are used in:
+    </p>
+        <ui>
+            <li>
+                Agriculture
+            </li>
+            <li>
+                Defense & surveillance
+            </li>
+            <li>
+                Disaster management
+            </li>
+            <li>
+                Delivery systems
+            </li>
+            <li>
+                Filmmaking
+            </li>
+            <li>
+                Mapping & 3D modelling
+            </li>
+            <li>
+                Industrial inspections
+            </li>
+        </ui>
+    <p>
+            Drones combine embedded systems, electronics, mechanical design, and AI, making them an important part of modern robotics.
+    </p>
+    </section>
+
+    <section id="types">
+        <h2>Frame & Aerodynamics</h2>
+        
+    <p>The frame is the physical body of the drone, designed for strength and lightweight performance.</p>
+            <ul>
+            <li>Made using carbon fiber, plastic, or aluminum </li>
+            <li>Must resist vibrations</li>
+            <li>Aerodynamics decide lift, drag, and stability</li>
+            <li> Quadcopter (X-shape, +-shape)</li>
+            <li>Hexacopter </li>
+            <li>Octocopter</li>
+            <li>Fixed-wing</li>
+            </ul>
+    </section>
+
+    <section id="components">
+        <h2>Motors & Propulsion System</h2>
+        <ul>
+            <p>What it includes:</p>
+            <li>Brushless DC motors (BLDC)</li>
+            <li>Propellers</li>
+            <li>Electronic Speed Controller (ESC)</li>
+            <p>Function:</p>
+        <p>
+                Motors generate thrust. ESC controls motor speed. Propellers convert rotational motion into lift.
+        </p>
+            <li>KV rating (rpm per volt)</li>
+            <li>Thrust-to-weight ratio</li>
+            <li>Propeller size & pitch</li>
+        </ul>
+    </section>
+
+
+    <section id="sensors">
+        <h2>Flight Controller (The Brain)</h2>
+    <p>What it is:</p>
+        <p>A microcontroller-based board that processes sensor data and stabilizes the drone.</p>
+        <ul>
+            <li> Pixhawk</li>
+            <li> ArduPilot</li>
+            <li>DJI Naza</li>
+            <li>KK2.1</li>
+        <p>Role</p>
+            <li> Reads sensors (IMU, GPS)</li>
+            <li>Balances the drone</li>
+            <li>Runs navigation algorithms</li>
+            <li>Communicates with remote controller</li>
+        </ul>
+    </section>
+
+    <section id="actuators">
+        <h2>Sensors in Drones</h2>
+        <p>Drones use a combination of sensors:</p>
+        <h3>IMU (Inertial Measurement Unit)</h3>
+    <p>Contains:</p>
+        <ul>
+            <li>Accelerometer</li>
+            <li> Gyroscope</li>
+            <li>Magnetometer</li>
+
+        <p>Used for orientation, angle, and rotation detection.</p>
+        <h3>GPS Module</h3>
+        <p>Used for:</p>
+        <ul>   
+        <li>Position estimation</li>
+        <li>Path planning</li>
+        <li>Return-to-Home</li>
+        </ul>   
+        
+<h3>Return-to-Home</h3>
+    <p>Measures altitude using air pressure.</p>
+    <h3>Ultrasonic/ LiDAR sensors</h3>
+    <p>Used for obstacle detection and landing.</p>
+<h3>
+        Optical Flow Sensor
+    </h3>
+    <p>Detects motion relative to ground.</p>
+    </section>
+
+    <section id="control">
+        <h2>Power System</h2>
+    <h3>Components</h3>
+        <ul>
+            <li> Li-Po battery (3S, 4S, 6S)</li>
+            <li> ESCs</li>
+            <li>Voltage/Current sensor</li>
+            </ul>
+    <h3>Why Li-Po?</h3>
+    <p>High discharge rate → supports high motor speed.</p>
+        
+    <h3>Drone Power Concepts</h3>
+    <ul>
+        <li>C-rating</li>
+        <li>Flight time calculation</li>
+        <li>Battery management</li>
+    </ul>
+    </section>
+
+    <section id="kinematics">
+        <h2>Communication Systems</h2>
+        <p>Drones communicate through:</p>
+    <h3>RC Transmitter/Receiver</h3>
+        <p>Range: 1–2 km
+</p>
+        <p>Used for manual control</p>
+    <h3>Telemetry Modules (433MHz/915MHz)</h3>
+        <p>Used for live data to ground station (Mission Planner).</p>
+    <h3>Wi-Fi / 4G / 5G</h3>
+        <p>Used in autonomous drones for:</p>
+            <ul>
+            <li> Live streaming</li>
+            <li> Cloud-based control</li>
+            <li>AI processing</li>
+            </ul>
+    </section>
+
+    <section id="dynamics">
+        <h2>Navigation & Control Algorithms</h2>
+    <p>Important algorithms</p>
+        <ul>
+            <li>
+                PID control
+            </li>
+            <li>
+                Kalman filter
+            </li>
+            <li>
+                SLAM (Simultaneous Localization and Mapping)
+            </li>
+            <li>
+                Waypoint navigation
+            </li>
+        </ul>
+    <h3>
+        Role
+    </h3>
+        <p>
+            Help drone understand:
+        </p>
+            <ul>
+                <li>
+                    Where it is
+                </li>
+                <li>
+                    Where it needs to go
+                </li>
+                <li>
+                    How to reach safely
+                </li>
+            </ul>
+    </section>
+
+    <section id="programming">
+    <h2>Computer Vision & AI</h2>
+        <p>Used in autonomous drones.</p>
+    <h3>AI techniques</h3>
+            <ul>
+            <li>Object detection (YOLO, CNNs) </li>
+            <li> Path planning</li>
+            <li>Obstacle avoidance</li>
+            <li>Target tracking</li>
+            </ul>
+    <h3>Hardware</h3>
+            <ul>
+                <li>Raspberry Pi</li>
+                <li>NVIDIA Jetson Nano</li>
+                <li>Intel RealSense camera</li>
+            </ul>
+    </section>
+
+    <section id="applications">
+        <h2>Stabilization & PID Control</h2>
+            <p>PID = Proportional + Integral + Derivative</p>
+            <p>Used to stabilize:</p>
+            <ui>
+            <li> Roll</li>
+            <li> Pitch</li>
+            <li> Yaw</li>
+            </ui>
+<p>If PID tuning is poor → drone shakes or drifts.</p>
+    </section>
+
+    <section id="applications">
+    <h2>Safety Systems</h2>
+        <p>Includes:</p>
+
+        <ul>
+            <li> Return-to-Home</li>
+            <li> Geo-fencing</li>
+            <li> Motor cut-off</li>
+            <li> Low-battery auto-landing</li>
+            <li> Redundant sensors</li>
+        </ul>
+    <p>Ensures safe flight.</p>
+    </section>
+    <section id="applications">
+    <h2>Applications in Robotics</h2>
+        <p>Drones are used for:</p>
+<h3>Robotics + AI</h3>
+        <ul>
+            <li> Autonomous navigation robots</li>
+            <li> Swarm robots</li>
+            <li>AI-assisted surveillance </li>
+           
+        </ul>
+<h3>Industrial Robotics</h3>
+        <ul>
+            <li>Inspection of machinery</li>
+            <li>Remote monitoring</li>
+        </ul>
+<h3>Agricultural Robotics</h3>
+        <ul>
+            <li>Pesticide spraying</li>
+            <li>Crop monitoring</li>
+        </ul>
+<h3>Defense Robotics</h3>
+        <ul>
+            <li>Tactical reconnaissance</li>
+            <li>Border security</li>
+        </ul>
+    </section>
+    
+    <section id="video lectures">
+        <h2>video lectures</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/LmEcyQnfpDA?si=oKcnpfG69ZEATiRE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></section>
+    <button class="button-1" onclick="location.href='Robotics Home.html' " >
+        Home
+    </button>
+</div>
+
+
+<!-- Background Floating Robot Images -->
+<img src="https://cdn-icons-png.flaticon.com/512/391/391005.png" class="bg-img" style="top:100px; left:600px; width:150px; animation-duration:18s;">
+
+
+</body>
+</html>

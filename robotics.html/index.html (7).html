@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robotics Fundamentals</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    body {
+        margin: 0;
+        font-family: 'Roboto', sans-serif;
+        background: #f9f9f9;
+        color: #333;
+        overflow-x: hidden;
+    }
+
+    /* Side Navbar */
+    .sidenav {
+        height: 200%;
+        width: 220px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #fff;
+        border-right: 1px solid #ddd;
+        overflow-x: hidden;
+        padding-top: 20px;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+    }
+
+    .sidenav a {
+        display: block;
+        color: #555;
+        padding: 12px 20px;
+        text-decoration: none;
+        transition: 0.3s;
+        border-left: 3px solid transparent;
+    }
+
+    .sidenav a:hover {
+        color: #1e90ff;
+        border-left: 3px solid #1e90ff;
+        background-color: #f1f1f1;
+    }
+
+    /* Main content */
+    .main {
+        margin-left: 240px;
+        padding: 20px 40px;
+        background-image: url("https://media.istockphoto.com/id/1026437182/vector/glowing-brain-and-circuit-board-background.jpg?s=612x612&w=0&k=20&c=HHEHD9-H1d6HE51Fe0hiNv7OWVaa4YkFnJCOpSAC5Uo=");
+        height: 100%;
+        width: 75%;
+        
+    }
+
+    h1, h2 {
+        color: #1e90ff;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+        from { text-shadow: 0 0 5px #1e90ff, 0 0 10px #1e90ff; }
+        to { text-shadow: 0 0 20px #1e90ff, 0 0 40px #1e90ff; }
+    }
+
+    section {
+        background: #fff;
+        padding: 30px;
+        margin-bottom: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        opacity: 0;
+        transform: translateY(50px);
+        animation: fadeInUp 1s forwards;
+    }
+
+    section:nth-child(2){animation-delay:0.2s;}
+    section:nth-child(3){animation-delay:0.4s;}
+    section:nth-child(4){animation-delay:0.6s;}
+    section:nth-child(5){animation-delay:0.8s;}
+    section:nth-child(6){animation-delay:1s;}
+    section:nth-child(7){animation-delay:1.2s;}
+    section:nth-child(8){animation-delay:1.4s;}
+    section:nth-child(9){animation-delay:1.6s;}
+    section:nth-child(10){animation-delay:1.8s;}
+
+    @keyframes fadeInUp {
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    p {
+        line-height: 1.6;
+        margin-bottom: 10px;
+    }
+
+    ul {
+        margin-left: 20px;
+        margin-bottom: 10px;
+    }
+
+    /* Background floating images */
+    .bg-img {
+        position: absolute;
+        opacity: 0.1;
+        animation: float 20s infinite ease-in-out alternate;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0) rotate(0deg);}
+        50% { transform: translateY(-50px) rotate(15deg);}
+        100% { transform: translateY(0) rotate(0deg);}
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+    .button-1{
+        height: 30px;
+        width: 80px;
+        background-color: rgb(81, 233, 81);
+        border-radius: 20px;
+        margin-left: 850px;
+        cursor: pointer;
+        border-color:rgb(81, 233, 81);
+    }
+</style>
+</head>
+<body>
+
+<!-- Side Navbar -->
+<div class="sidenav">
+    <img src="https://static.vecteezy.com/system/resources/thumbnails/062/013/259/small_2x/modern-logo-design-showcasing-a-humanoid-robotics-technology-concept-featuring-a-sleek-and-minimalistic-blue-and-white-color-scheme-with-futuristic-elements-free-vector.jpg"   
+    height="70px" width="100px" padding-left="15px">
+    <a href="#intro">Power Supply Components</a>
+    <a href="#types">Microcontrollers & Processing Units</a>
+    <a href="#components">Sensors</a>
+    <a href="#sensors">Actuators</a>
+    <a href="#kinematics">Driver & Control Circuits</a>
+    <a href="#dynamics">Passive Components</a>
+    <a href="#programming">Other Useful Modules</a>
+    <a href="#video lectures">video lecture</a>
+</div>
+
+<!-- Main Content -->
+<div class="main">
+    <h1>Humanoid Robot Engineering</h1>
+
+    <section id="intro">
+        <h2>Power Supply Components</h2>
+        <p>
+            Power is the lifeline of any robot. Without stable power, a robot cannot operate properly.
+        </p>
+        <p>
+            <ul>
+                <li>
+                    Battery – Provides energy to the entire robot. Types include:
+                </li>
+                <li>
+                    Li-Po (Lithium-Polymer): High energy density, lightweight, commonly used in drones and humanoids.
+
+                    <li>Li-Ion (Lithium-Ion): Rechargeable, stable, ideal for mobile robots.</li>
+
+                    <li>NiMH (Nickel Metal Hydride): Safer and cheaper, but heavier.</li>
+                    <li>Voltage Regulators – Ensure the robot circuits receive constant voltage. For example, LM7805 gives stable 5V output to sensors and microcontrollers.
+
+                       <li> DC-DC Converters – Step up or step down voltage to power different components (like motors needing 12V while sensors need 5V).
+                        </li>
+
+                        <li>Power Switches / Relays – Enable safe control of power, turning devices on/off remotely or automatically.</li>
+                </li>
+            </ul>
+        </p>
+    </section>
+
+    <section id="types">
+        <h2>Microcontrollers & Processing Units</h2>
+        <p>
+            Microcontrollers are the “brain” of your robot. They read sensors, process data, and control actuators.
+        </p>
+        <ul>
+        <li>
+            Arduino (Uno, Mega, Nano): Easy to program with C/C++. Ideal for beginners.
+        </li>
+        <li>
+         Raspberry Pi: Mini computer with Linux OS. Perfect for AI, vision processing, and advanced robots.   
+        </li><li>
+            ESP32 / ESP8266: Microcontrollers with built-in Wi-Fi and Bluetooth for IoT and remote-controlled robots.
+        </li>
+        <li>
+            STM32 / PIC Microcontrollers: Advanced microcontrollers for precise and high-speed robotic tasks.
+        </li>
+        </ul>
+    </section>
+
+    <section id="components">
+        <h2>Sensors</h2>
+        <P>Sensors allow robots to “sense” their environment, making them intelligent.</P>
+        <ul>
+            <li>
+                Ultrasonic Sensor (HC-SR04): Uses sound waves to measure distance. Useful in obstacle-avoiding robots.
+            </li>
+            <li>
+                IR Sensor / IR Proximity Sensor: Detects nearby objects and lines; commonly used in line-following robots.
+            </li>
+            <li>
+                Temperature Sensor (LM35, DHT11/22): Measures heat; can control robot fans or monitor environment.
+            </li>
+            <li>
+                Gyroscope & Accelerometer (MPU6050): Detect orientation and movement; essential for humanoids to balance.
+            </li>
+            <li>
+                Light Sensor / LDR: Measures light intensity; used in solar robots or light-following robots.
+            </li>
+            <li>
+                Touch / Force Sensor: Detects physical contact; used in robotic arms and human-interactive robots.
+            </li>
+            <li>
+                Camera Module (Raspberry Pi Camera, OV7670): Provides vision for object detection and recognition.
+            </li>
+        </ul>
+        
+    </section>
+
+    <section id="sensors">
+        <h2>Actuators</h2>
+        <p>
+            Actuators are what make robots move. They convert electrical energy into mechanical motion.
+        </p>
+        <ul>
+            <li>
+                DC Motors: Provide continuous rotation. Common in wheeled robots.
+            </li>
+            <li>
+                Servo Motors: Provide precise angular movement. Used in robot arms and humanoid joints.
+            </li>
+            <li>
+                Stepper Motors: Move in steps, allowing very precise positioning. Used in 3D printers and CNC robots.
+            </li>
+            <li>
+                Solenoids: Create linear motion; often used for robotic grippers or locks.
+            </li>
+            <li>
+                Linear Actuators: Extend/retract parts of robots, like lifting arms or opening doors.
+            </li>
+        </ul>
+        <p>💡 Tip: For humanoid robots, servo motors are critical for walking and arm movement due to precision control.</p>
+        
+    </section>
+
+    <section id="actuators">
+        <h2>Driver & Control Circuits</h2>
+        <p>
+            Microcontrollers cannot usually supply enough power for motors. Driver circuits help with that.
+        </p>
+        <ul>
+            <li>
+                Motor Driver ICs (L298N, L293D): Control speed and direction of DC and stepper motors.
+            </li>
+            <li>
+                H-Bridge Circuits: Allow motors to rotate forward or backward.
+            </li>
+            <li>
+                Relay Modules: Switch high-power devices using low-power control signals.
+            </li>
+        </ul>
+        
+    </section>
+
+    <section id="control">
+        <h2>Passive Components</h2>
+        <p>
+            Basic building blocks of electronics.
+        </p>
+       <ul>
+        <li>
+            Resistors: Control the flow of current, protect components.
+        </li>
+        <li>
+            Capacitors: Store energy, smooth voltage fluctuations.
+        </li>
+        <li>
+            Diodes / LEDs: Control current direction, light indicators.
+        </li>
+        <li>
+            Transistors: Switch circuits or amplify signals.
+        </li>
+       </ul>
+    </section>
+
+    <section id="kinematics">
+        <h2>Other Useful Modules</h2>
+        <p>
+            Special components for advanced robots.
+        </p>
+        <ul>
+            <li>
+                IMU Sensor: Combines gyroscope, accelerometer, and magnetometer for precise motion tracking.
+            </li>
+            <li>
+                RFID Module: Identifies objects or people, used in access-control robots.
+            </li>
+            <li>
+                GPS Module: Navigation and location tracking for autonomous robots.
+            </li>
+        </ul>
+        
+    </section>
+    <section id="applications">
+        <h2>Applications</h2>
+        <ul>
+            <li><strong>Manufacturing:</strong> Assembly lines, welding, packaging.</li>
+            <li><strong>Healthcare:</strong> Surgery, rehabilitation, eldercare.</li>
+            <li><strong>Exploration:</strong> Space, underwater, hazardous environments.</li>
+            <li><strong>Service:</strong> Delivery robots, cleaning robots, hospitality robots.</li>
+            <li><strong>Education:</strong> Teaching programming, AI, and mechanical concepts.</li>
+        </ul>
+    </section>
+    <section id="video lectures">
+        <h2>video lectures</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/XfQs-PQaC_E?si=YiilCFnlyNvkYZlh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/Hm7e3ADBoRI?si=KCJ9zCKe9DUnz92e" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/EX2vBi0tlpw?si=OAuQ8QnMan7RBLw9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </section>
+     <button class="button-1" onclick="location.href='Robotics Home.html' " >
+        Home
+    </button>
+</div>
+
+<!-- Background Floating Robot Images -->
+<img src="https://cdn-icons-png.flaticon.com/512/391/391005.png" class="bg-img" style="top:100px; left:600px; width:150px; animation-duration:18s;">
+
+
+</body>
+</html>

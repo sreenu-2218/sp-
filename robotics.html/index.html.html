@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robotics Fundamentals</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    body {
+        margin: 0;
+        font-family: 'Roboto', sans-serif;
+        background: #f9f9f9;
+        color: #333;
+        overflow-x: hidden;
+    }
+
+    /* Side Navbar */
+    .sidenav {
+        height: 200%;
+        width: 220px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #fff;
+        border-right: 1px solid #ddd;
+        overflow-x: hidden;
+        padding-top: 20px;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+    }
+
+    .sidenav a {
+        display: block;
+        color: #555;
+        padding: 12px 20px;
+        text-decoration: none;
+        transition: 0.3s;
+        border-left: 3px solid transparent;
+    }
+
+    .sidenav a:hover {
+        color: #1e90ff;
+        border-left: 3px solid #1e90ff;
+        background-color: #f1f1f1;
+    }
+
+    /* Main content */
+    .main {
+        margin-left: 240px;
+        padding: 20px 40px;
+        background-image: url("https://media.istockphoto.com/id/1026437182/vector/glowing-brain-and-circuit-board-background.jpg?s=612x612&w=0&k=20&c=HHEHD9-H1d6HE51Fe0hiNv7OWVaa4YkFnJCOpSAC5Uo=");
+        height: 100%;
+        width: 75%;
+        
+    }
+
+    h1, h2 {
+        color: #1e90ff;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+        from { text-shadow: 0 0 5px #1e90ff, 0 0 10px #1e90ff; }
+        to { text-shadow: 0 0 20px #1e90ff, 0 0 40px #1e90ff; }
+    }
+
+    section {
+        background: #fff;
+        padding: 30px;
+        margin-bottom: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        opacity: 0;
+        transform: translateY(50px);
+        animation: fadeInUp 1s forwards;
+    }
+
+    section:nth-child(2){animation-delay:0.2s;}
+    section:nth-child(3){animation-delay:0.4s;}
+    section:nth-child(4){animation-delay:0.6s;}
+    section:nth-child(5){animation-delay:0.8s;}
+    section:nth-child(6){animation-delay:1s;}
+    section:nth-child(7){animation-delay:1.2s;}
+    section:nth-child(8){animation-delay:1.4s;}
+    section:nth-child(9){animation-delay:1.6s;}
+    section:nth-child(10){animation-delay:1.8s;}
+
+    @keyframes fadeInUp {
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    p {
+        line-height: 1.6;
+        margin-bottom: 10px;
+    }
+
+    ul {
+        margin-left: 20px;
+        margin-bottom: 10px;
+    }
+
+    /* Background floating images */
+    .bg-img {
+        position: absolute;
+        opacity: 0.1;
+        animation: float 20s infinite ease-in-out alternate;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0) rotate(0deg);}
+        50% { transform: translateY(-50px) rotate(15deg);}
+        100% { transform: translateY(0) rotate(0deg);}
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+</style>
+</head>
+<body>
+
+<!-- Side Navbar -->
+<div class="sidenav">
+    <img src="https://static.vecteezy.com/system/resources/thumbnails/062/013/259/small_2x/modern-logo-design-showcasing-a-humanoid-robotics-technology-concept-featuring-a-sleek-and-minimalistic-blue-and-white-color-scheme-with-futuristic-elements-free-vector.jpg"   
+    height="70px" width="100px" padding-left="15px">
+    <a href="#intro">Introduction</a>
+    <a href="#types">Objectives of AI</a>
+    <a href="#components">Types of AI</a>
+    <a href="#sensors"></a>
+    <a href="#kinematics"></a>
+    <a href="#dynamics"></a>
+    <a href="#programming"></a>
+    <a href="#video lectures"></a>
+</div>
+
+<!-- Main Content -->
+<div class="main">
+    <h1>Introduction About AI</h1>
+
+    <section id="intro">
+        <h2>Introduction About AI</h2>
+        <p>In recent years, rapid advancements in computing power, data availability, and intelligent algorithms have led to the emergence of Artificial Intelligence (AI) and Machine Learning (ML) as transformative technologies. These technologies enable machines to perform tasks that normally require human intelligence, such as learning, reasoning, perception, decision-making, and problem solving.</p>
+        <p>Artificial Intelligence (AI) is a broad field of computer science focused on creating systems capable of mimicking human intelligence. AI-powered systems can analyze their environment, process information, and take appropriate actions to achieve specific goals. In the field of robotics, AI plays a crucial role by enabling robots to operate autonomously, interact with humans, and adapt to dynamic environments.</p>
+        <p>Machine Learning (ML) is a key subset of AI that allows machines to learn from data and improve their performance over time without explicit programming. Instead of following fixed rules, ML models identify patterns from historical data and use them to make predictions or decisions. This learning capability makes ML highly effective for real-world robotic applications such as object recognition, navigation, speech processing, and motion control.</p>
+        <p>Together, AI and ML form the intelligence backbone of modern RoboTech systems. AI provides the decision-making framework, while ML enables continuous learning and adaptation. By integrating AI and ML, robots become capable of understanding their surroundings, responding intelligently to changes, and performing complex tasks with minimal human intervention.</p>
+        <p>
+            The combination of AI and Machine Learning is driving the evolution of smart robots, autonomous vehicles, intelligent drones, and humanoid systems. As a result, these technologies are becoming essential components in industrial automation, healthcare robotics, defense systems, smart manufacturing, and human-robot interaction.
+        </p>
+
+        
+    </section>
+
+    <section id="types">
+        <h2>Objectives of AI</h2>
+        <p>The main objective of Artificial Intelligence (AI) is to design and develop intelligent systems that can simulate human intelligence by learning from experience, reasoning logically, and making decisions autonomously. AI aims to enable machines to perceive their environment through sensory data, understand and interpret information, solve complex problems, and adapt to changing situations with minimal human intervention. Another important objective of AI is to improve efficiency, accuracy, and speed in performing tasks while reducing human effort. In the field of robotics, AI focuses on creating autonomous systems capable of interacting naturally with humans, responding intelligently to real-time conditions, and performing complex operations effectively.</p>
+    </section>
+
+    <section id="components">
+        <h2>Types of Artificial Intelligence</h2>
+    <ul>
+        <li>Narrow AI (Weak AI)</li>
+        <p>Designed for specific tasks</p>
+        <p>Examples: Face recognition, Voice assistants, Chatbots</p>
+        <li>General AI (Strong AI)</li>
+        <P>Performs any intellectual task like humans</P>
+        <p>
+            Still under research
+        </p>
+        <li>Super AI</li>
+        <P>Intelligence beyond human level</P>
+        <p>Theoretical concept</p>
+        <li>Core Components of AI</li>
+        <p>Learning – Acquiring knowledge from data</p>
+        <p>Reasoning – Logical decision making</p>
+        <p>Problem Solving – Finding optimal solutions</p>
+        <p>Language Understanding – NLP</p>
+        <li>Applications of AI in Robotics</li>
+        <P>
+            Autonomous robots
+        </P>
+        <p>Obstacle detection</p>
+        <p>Path planning</p>
+        <P>Speech-controlled robots</P>
+        <p>Facial recognition robots</p>
+    </ul>
+   
+    </section>
+
+    <section id="sensors">
+        <h2>Machine Learning</h2>
+        <p>Machine Learning (ML) is a branch of Artificial Intelligence that focuses on enabling machines to learn from data and improve their performance without being explicitly programmed. In ML, algorithms analyze historical data, identify patterns, and use these patterns to make predictions or decisions. The primary goal of machine learning is to develop systems that can adapt and improve automatically as new data becomes available. ML plays a vital role in robotics by allowing machines to recognize objects, understand speech, predict outcomes, and perform intelligent actions based on experience. By continuously learning from real-world interactions, machine learning enhances the accuracy, efficiency, and autonomy of intelligent systems.</p>
+
+       
+      
+    </section>
+
+    <section id="actuators">
+        <h2>Types of Machine Learning</h2>
+       
+        <ul>
+            <li>
+                Supervised Learning
+            </li>
+            <p>Uses labeled data</p>
+            <p>Examples: Spam detection, Object classification</p>
+            <li>
+                Algorithms:
+            </li>
+            <p>Linear Regression</p>
+            <P>
+                Decision Trees
+            </P>
+            <P>Support Vector Machine (SVM)</P>
+            <li>
+                Unsupervised Learning
+            </li>
+            <p>Uses unlabeled data</p>
+            <p>Finds hidden patterns</p>
+            <li>Algorithms:</li>
+            <p>Hierarchical Clustering</p>
+            <p>K-Means Clustering</p>
+            <p>PCA</p>
+            <li>Reinforcement Learning</li>
+            <p>Learns by trial and error</p>
+            <p>Uses rewards and penalties</p>
+            
+        </ul>
+        
+    </section>
+
+    <section id="control">
+        <h2></h2>
+        <p>
+            Basic building blocks of electronics.
+        </p>
+       <ul>
+        <li>
+            Resistors: Control the flow of current, protect components.
+        </li>
+        <li>
+            Capacitors: Store energy, smooth voltage fluctuations.
+        </li>
+        <li>
+            Diodes / LEDs: Control current direction, light indicators.
+        </li>
+        <li>
+            Transistors: Switch circuits or amplify signals.
+        </li>
+       </ul>
+    </section>
+
+    <section id="kinematics">
+        <h2></h2>
+        <p>
+            Special components for advanced robots.
+        </p>
+        <ul>
+            <li>
+                IMU Sensor: Combines gyroscope, accelerometer, and magnetometer for precise motion tracking.
+            </li>
+            <li>
+                RFID Module: Identifies objects or people, used in access-control robots.
+            </li>
+            <li>
+                GPS Module: Navigation and location tracking for autonomous robots.
+            </li>
+        </ul>
+        
+    </section>
+    <section id="applications">
+        <h2></h2>
+        <ul>
+            <li><strong>Manufacturing:</strong> Assembly lines, welding, packaging.</li>
+            <li><strong>Healthcare:</strong> Surgery, rehabilitation, eldercare.</li>
+            <li><strong>Exploration:</strong> Space, underwater, hazardous environments.</li>
+            <li><strong>Service:</strong> Delivery robots, cleaning robots, hospitality robots.</li>
+            <li><strong>Education:</strong> Teaching programming, AI, and mechanical concepts.</li>
+        </ul>
+    </section>
+    <section id="video lectures">
+        <h2></h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/XfQs-PQaC_E?si=YiilCFnlyNvkYZlh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/Hm7e3ADBoRI?si=KCJ9zCKe9DUnz92e" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/EX2vBi0tlpw?si=OAuQ8QnMan7RBLw9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </section>
+    <button class="button-1" onclick="location.href='Robotics Home.html' " >
+        Home
+    </button>
+</div>
+
+<!-- Background Floating Robot Images -->
+<img src="https://cdn-icons-png.flaticon.com/512/391/391005.png" class="bg-img" style="top:100px; left:600px; width:150px; animation-duration:18s;">
+
+
+</body>
+</html>

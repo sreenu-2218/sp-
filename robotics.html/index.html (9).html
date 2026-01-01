@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoboTech Academy - Building the Next Generation of Innovators</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap');
+        
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #6a0dad;
+            --accent-color: #00ccff;
+            --bg-color: #f5f5f7;
+            --text-color: #1a1a1a;
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --nav-height: 80px;
+        }
+        
+        [data-theme="dark"] {
+            --bg-color: #0a0a0a;
+            --text-color: #ffffff;
+            --card-bg: rgba(20, 20, 30, 0.7);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Orbitron', monospace;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+        
+        /* Background Slideshow */
+        .bg-slideshow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+        
+        .bg-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+        
+        .bg-slide.active {
+            opacity: 0.4;
+        }
+        
+        /* 3D Floating Shapes */
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .shape {
+            position: absolute;
+            opacity: 0.15;
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        .shape:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            animation-delay: 0s;
+        }
+        
+        .shape:nth-child(2) {
+            top: 60%;
+            left: 80%;
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            animation-delay: 2s;
+        }
+        
+        .shape:nth-child(3) {
+            top: 40%;
+            left: 40%;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            transform: rotate(45deg);
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+            50% {
+                transform: translateY(0) rotate(0deg);
+            }
+            75% {
+                transform: translateY(20px) rotate(-5deg);
+            }
+        }
+        
+        /* Robot Outlines */
+        .robot-outline {
+            position: fixed;
+            opacity: 0.08;
+            z-index: -1;
+        }
+        
+        .robot-outline:nth-child(1) {
+            top: 10%;
+            right: 5%;
+            font-size: 150px;
+            color: var(--primary-color);
+            animation: pulse 4s infinite alternate;
+        }
+        
+        .robot-outline:nth-child(2) {
+            bottom: 10%;
+            left: 5%;
+            font-size: 120px;
+            color: var(--secondary-color);
+            animation: pulse 5s infinite alternate-reverse;
+        }
+        
+        .robot-outline:nth-child(3) {
+            top: 30%;
+            left: 15%;
+            font-size: 100px;
+            color: var(--accent-color);
+            animation: pulse 6s infinite alternate;
+        }
+        
+        .robot-outline:nth-child(4) {
+            bottom: 20%;
+            right: 15%;
+            font-size: 130px;
+            color: var(--primary-color);
+            animation: pulse 7s infinite alternate-reverse;
+        }
+        
+        @keyframes pulse {
+            0% {
+                opacity: 0.05;
+                transform: scale(0.95);
+            }
+            100% {
+                opacity: 0.15;
+                transform: scale(1.05);
+            }
+        }
+        
+        /* Circuit Pattern */
+        .circuit-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.05;
+            background-image: 
+                linear-gradient(90deg, var(--primary-color) 1px, transparent 1px),
+                linear-gradient(0deg, var(--primary-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: circuit-move 20s linear infinite;
+        }
+        
+        @keyframes circuit-move {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 50px 50px;
+            }
+        }
+        
+        /* Floating Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: float-particle 20s infinite linear;
+        }
+        
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.4;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+        
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--nav-height);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            background: rgba(245, 245, 247, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        [data-theme="dark"] .navbar {
+            background: rgba(10, 10, 10, 0.8);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(0, 102, 204, 0.3);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+            box-shadow: 0 0 10px var(--primary-color);
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color);
+            text-shadow: 0 0 10px var(--primary-color);
+        }
+        
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            background: var(--primary-color);
+            color: var(--bg-color);
+            box-shadow: 0 0 15px var(--primary-color);
+        }
+        
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: var(--nav-height) 5% 5%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+        }
+        
+        .hero-title {
+            font-size: clamp(2rem, 8vw, 4.5rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                filter: drop-shadow(0 0 10px var(--primary-color));
+            }
+            to {
+                filter: drop-shadow(0 0 20px var(--secondary-color)) drop-shadow(0 0 30px var(--accent-color));
+            }
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 102, 204, 0.3);
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            z-index: -1;
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+        
+        .cta-button:hover::before {
+            opacity: 1;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 102, 204, 0.5);
+        }
+        
+        /* About Section */
+        .about-container {
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .about-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .robot-illustration {
+            font-size: 10rem;
+            color: var(--primary-color);
+            animation: slide-in 1s ease-out;
+        }
+        
+        @keyframes slide-in {
+            from {
+                transform: translateX(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        /* Courses Section */
+        .courses-container {
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .course-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 102, 204, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        [data-theme="dark"] .course-card {
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0, 102, 204, 0.05), rgba(106, 13, 173, 0.05));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 102, 204, 0.2);
+            border-color: var(--primary-color);
+        }
+        
+        .course-card:hover::before {
+            opacity: 1;
+        }
+        
+        .course-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .course-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        
+        .course-description {
+            color: var(--text-color);
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+        
+        /* Projects Section */
+        .projects-container {
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 102, 204, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        [data-theme="dark"] .project-card {
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .project-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 102, 204, 0.2);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .project-description {
+            color: var(--text-color);
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        .contact-form {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 102, 204, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        [data-theme="dark"] .contact-form {
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 102, 204, 0.2);
+            border-radius: 8px;
+            color: var(--text-color);
+            font-family: 'Orbitron', monospace;
+            transition: all 0.3s ease;
+        }
+        
+        [data-theme="dark"] .form-input, 
+        [data-theme="dark"] .form-textarea {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+        
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 10px rgba(0, 102, 204, 0.2);
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        .submit-button {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            z-index: 1;
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+        
+        .submit-button:hover::before {
+            opacity: 1;
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 102, 204, 0.3);
+        }
+        
+        .submit-button span {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .robot-illustration {
+                font-size: 6rem;
+            }
+        
+        }
+        .btn-1{
+                background-color: blue;
+                color: white;
+                padding: 5px;
+                border-radius: 20px;
+                width: 80px;
+                margin-top: 20px;
+                border: none;
+                cursor: pointer;
+
+        }
+        .btn-2{
+             background-color: blue;
+                color: white;
+                padding: 5px;
+                border-radius: 20px;
+                width: 100px;
+                margin-top: 20px;
+                border: none;
+                cursor: pointer;
+
+        }
+        .h1{
+            padding-left: 20px;
+            text-align: center;
+
+        }
+        .p1{
+            text-align: center;
+            padding-top: 10px;
+            padding-left: 25px;
+            padding-bottom: 30px;
+        }
+    
+    </style>
+</head>
+<body data-theme="light">
+    <!-- Background Slideshow -->
+    <div class="bg-slideshow">
+        <!-- You can change these URLs to any robotics images you like -->
+        <div class="bg-slide active" style="background-image: url('https://img.freepik.com/free-vector/futuristic-white-technology-background_23-2148390336.jpg?semt=ais_hybrid&w=740&q=80');"></div>
+        <div class="bg-slide" style="background-image: url('https://t4.ftcdn.net/jpg/15/27/09/57/360_F_1527095752_KqmfvdDIDtWXhnZ7nixBa9RFctd7DcUY.jpg');"></div>
+        <div class="bg-slide" style="background-image: url('https://img.freepik.com/premium-photo/technologically-advanced-modern-robot-points-with-its-finger-neural-networks-artificial_99433-10394.jpg?semt=ais_hybrid&w=740&q=80');"></div>
+        <div class="bg-slide" style="background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20230617/pngtree-ai-robot-in-action-3d-rendered-computing-or-analysis-on-a-image_3618039.jpg');"></div>
+    </div>
+    
+    <!-- Circuit Pattern -->
+    <div class="circuit-pattern"></div>
+    
+    <!-- 3D Floating Shapes -->
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    
+    <!-- Robot Outlines -->
+    <div class="robot-outline">
+        <i class="fas fa-robot"></i>
+    </div>
+    <div class="robot-outline">
+        <i class="fas fa-android"></i>
+    </div>
+    <div class="robot-outline">
+        <i class="fas fa-microchip"></i>
+    </div>
+    <div class="robot-outline">
+        <i class="fas fa-cogs"></i>
+    </div>
+    
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">RoboTech</div>
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#courses" class="nav-link">Courses</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <button class="theme-toggle" id="theme-toggle">
+            <i class="fas fa-sun"></i>
+        </button>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero visible">
+        <h1 class="hero-title">Building the Next Generation of Innovators</h1>
+        <p class="hero-subtitle">Explore the future of robotics and technology</p>
+        <a href="#courses" class="cta-button">Explore Courses</a>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about">
+        <div class="about-container">
+            <h2 class="section-title">About Edu-Tech & Robotics Hub</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="about-description">
+                        We are an online platform dedicated to robotics, electronics, and artificial intelligence education. 
+                        Our mission is to empower students, beginners, and innovators with the knowledge and skills needed 
+                        to thrive in the rapidly evolving tech landscape.
+                    </p>
+                    <p class="about-description">
+                        Through our comprehensive courses, hands-on projects, and expert guidance, we bridge the gap between 
+                        theoretical knowledge and practical application, preparing our learners for the challenges and 
+                        opportunities of tomorrow.
+                    </p>
+                </div>
+                <div class="about-image">
+                    <div class="robot-illustration">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Courses Section -->
+    <section id="courses">
+        <div class="courses-container">
+            <h2 class="section-title">Our Courses</h2>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="course-title" id="sectionfundamentals">Robotics Fundamentals</h3>
+                    <p class="course-description">
+                        Learn the core principles of robotics including mechanics, electronics, and programming to build your first robot.
+                    </p>
+
+                    <button class="btn-1" onclick="location.href='Robotics Fundamentals.html' ">
+                        view →
+                    </button>
+                </div>
+                <div class="course-card">
+                    <div class="course-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3 class="course-title">Electronics for Robotics</h3>
+                    <p class="course-description">
+                        Master the essential electronic components and circuits that power modern robotic systems.
+                    </p>
+                    <button class="btn-1" onclick="location.href='Electronics for robotics.html' ">
+                        view →
+                    </button>
+                </div>
+                <div class="course-card">
+                    <div class="course-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3 class="course-title">Arduino & Sensors</h3>
+                    <p class="course-description">
+                        Dive into the world of microcontrollers and sensors to create interactive and responsive robotic projects.
+                    </p>
+                    <button class="btn-1" onclick="location.href='Arduino & sensors.html' ">
+                        view →
+                    </button>
+                </div>
+                <div class="course-card">
+                    <div class="course-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="course-title">AI & Machine Learning Basics</h3>
+                    <p class="course-description">
+                        Explore the fundamentals of artificial intelligence and machine learning to create intelligent robotic systems.
+                    </p>
+                    <button class="btn-1" onclick="location.href='Ai & meachine learning basics.html' ">
+                        view →
+                    </button>
+                </div>
+                <div class="course-card">
+                    <div class="course-icon">
+                        <i class="fas fa-user-astronaut"></i>
+                    </div>
+                    <h3 class="course-title">Humanoid Robot Engineering</h3>
+                    <p class="course-description">
+                        Learn to design and build humanoid robots that mimic human movements and interactions.
+                    </p>
+                    <button class="btn-1" onclick="location.href='humanoid robot.html' ">
+                        view →
+                    </button>
+                </div>
+                <div class="course-card">
+                    <div class="course-icon">
+                        <i class="fas fa-helicopter"></i>
+                    </div>
+                    <h3 class="course-title">Drone Technology</h3>
+                    <p class="course-description">
+                        Master the principles of flight, control systems, and applications of drone technology in various fields.
+                    </p>
+                    <button class="btn-1" onclick="location.href='drone tech.html' ">
+                        view →
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="projects-container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Line Follower Robot" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">Line Follower Robot</h3>
+                        <p class="project-description">
+                            An autonomous robot that follows a predefined path using infrared sensors and microcontroller programming.
+                        </p>
+                        <button class="btn-2" onclick="location.href='line follwer.html' "> 
+                            see more →
+                        </button>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://hackaday.com/wp-content/uploads/2019/10/lims2-featured.jpg" alt="Humanoid Arm" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">Humanoid Arm</h3>
+                        <p class="project-description">
+                            A robotic arm with multiple degrees of freedom designed to mimic human arm movements for various applications.
+                        </p>
+                        <button class="btn-2" onclick="location.href='humanoid arm.html'">
+                            see more →
+                        </button>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://i.ytimg.com/vi/4z2f5RIKvak/maxresdefault.jpg" alt="AI Face Detection Robot" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">AI Face Detection Robot</h3>
+                        <p class="project-description">
+                            An intelligent robot equipped with computer vision capabilities to detect and recognize human faces.
+                        </p>
+                        <button class="btn-2" onclick="location.href='face detection.html'">
+                            see more →
+                        </button>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://i.ytimg.com/vi/bRZNyQtwZVE/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLA8vYa6VZgJauOrwAcUt_sdG1pkaQ" alt="Obstacle Avoiding Robot" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">Obstacle Avoiding Robot</h3>
+                        <p class="project-description">
+                            A smart robot that uses ultrasonic sensors to detect and navigate around obstacles in its path.
+                        </p>
+                        <button class="btn-2" onclick="location.href='obtacle.html'">
+                            see more →
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <div id="contact"> 
+            <h1 class="h1">
+                Contact
+            </h1>
+            <p class="p1">
+                Sreenu Ponaganti
+            </p>
+        </div>
+    
+    
+    <!-- Contact Section -->
+    
+    
+    <script>
+        // Background Slideshow
+        const slides = document.querySelectorAll('.bg-slide');
+        let currentSlide = 0;
+        
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        
+        setInterval(nextSlide, 5000);
+        
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            if (body.getAttribute('data-theme') === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                body.setAttribute('data-theme', 'light');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        });
+        
+        // Scroll Reveal Animation
+        const sections = document.querySelectorAll('section');
+        
+        function revealOnScroll() {
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (sectionTop < windowHeight * 0.75) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Create Floating Particles
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 50;
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            // Random size
+            const size = Math.random() * 5 + 2;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            
+            // Random position
+            particle.style.left = `${Math.random() * 100}%`;
+            
+            // Random animation duration
+            const duration = Math.random() * 20 + 10;
+            particle.style.animationDuration = `${duration}s`;
+            
+            // Random delay
+            particle.style.animationDelay = `${Math.random() * 5}s`;
+            
+            // Random color
+            const colors = ['#0066cc', '#6a0dad', '#00ccff'];
+            particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            particlesContainer.appendChild(particle);
+        }
+        
+        // Form Submission
+        const contactForm = document.getElementById('contact-form');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            alert(`Thank you, ${name}! Your message has been received. We'll contact you at ${email} soon.`);
+            
+            // Reset form
+            contactForm.reset();
+        });
+    </script>
+    <script type="text/javascript" src="https://d2clawv67efefq.cloudfront.net/ccbp-static-website/js/ccbp-ui-kit.js"></script>
+</body>
+</html>

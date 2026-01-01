@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robotics Fundamentals</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    body {
+        margin: 0;
+        font-family: 'Roboto', sans-serif;
+        background: #f9f9f9;
+        color: #333;
+        overflow-x: hidden;
+    }
+
+    /* Side Navbar */
+    .sidenav {
+        height: 200%;
+        width: 220px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color:#fff;
+        border-right: 1px solid #ddd;
+        overflow-x: hidden;
+        padding-top: 20px;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+    }
+
+    .sidenav a {
+        display: block;
+        color: #555;
+        padding: 12px 20px;
+        text-decoration: none;
+        transition: 0.3s;
+        border-left: 3px solid transparent;
+    }
+
+    .sidenav a:hover {
+        color: #1e90ff;
+        border-left: 3px solid #1e90ff;
+        background-color: #f1f1f1;
+    }
+
+    /* Main content */
+    .main {
+        margin-left: 240px;
+        padding: 20px 40px;
+        background-image: url("https://media.istockphoto.com/id/1026437182/vector/glowing-brain-and-circuit-board-background.jpg?s=612x612&w=0&k=20&c=HHEHD9-H1d6HE51Fe0hiNv7OWVaa4YkFnJCOpSAC5Uo=");
+        height: 100%;
+        width: 75%;
+        
+    }
+
+    h1, h2 {
+        color: #1e90ff;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+        from { text-shadow: 0 0 5px #1e90ff, 0 0 10px #1e90ff; }
+        to { text-shadow: 0 0 20px #1e90ff, 0 0 40px #1e90ff; }
+    }
+
+    section {
+        background: #fff;
+        padding: 30px;
+        margin-bottom: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        opacity: 0;
+        transform: translateY(50px);
+        animation: fadeInUp 1s forwards;
+    }
+
+    section:nth-child(2){animation-delay:0.2s;}
+    section:nth-child(3){animation-delay:0.4s;}
+    section:nth-child(4){animation-delay:0.6s;}
+    section:nth-child(5){animation-delay:0.8s;}
+    section:nth-child(6){animation-delay:1s;}
+    section:nth-child(7){animation-delay:1.2s;}
+    section:nth-child(8){animation-delay:1.4s;}
+    section:nth-child(9){animation-delay:1.6s;}
+    section:nth-child(10){animation-delay:1.8s;}
+
+    @keyframes fadeInUp {
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    p {
+        line-height: 1.6;
+        margin-bottom: 10px;
+    }
+
+    ul {
+        margin-left: 20px;
+        margin-bottom: 10px;
+    }
+
+    /* Background floating images */
+    .bg-img {
+        position: absolute;
+        opacity: 0.1;
+        animation: float 20s infinite ease-in-out alternate;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0) rotate(0deg);}
+        50% { transform: translateY(-50px) rotate(15deg);}
+        100% { transform: translateY(0) rotate(0deg);}
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+    .button-1{
+        height: 30px;
+        width: 80px;
+        background-color: rgb(81, 233, 81);
+        border-radius: 20px;
+        margin-left: 850px;
+        cursor: pointer;
+        border-color:rgb(81, 233, 81);
+    }
+</style>
+</head>
+<body>
+
+<!-- Side Navbar -->
+<div class="sidenav">
+    <img src="https://static.vecteezy.com/system/resources/thumbnails/062/013/259/small_2x/modern-logo-design-showcasing-a-humanoid-robotics-technology-concept-featuring-a-sleek-and-minimalistic-blue-and-white-color-scheme-with-futuristic-elements-free-vector.jpg" 
+    height="70px" width="100px" padding-left="15px">
+    <a href="#intro">Introduction</a>
+    <a href="#types">Types of Robots</a>
+    <a href="#components">Components</a>
+    <a href="#sensors">Sensors</a>
+    <a href="#actuators">Actuators</a>
+    <a href="#control">Control Systems</a>
+    <a href="#kinematics">Kinematics</a>
+    <a href="#dynamics">Dynamics</a>
+    <a href="#programming">Programming</a>
+    <a href="#applications">Applications</a>
+    <a href="#video lectures">video lecture</a>
+</div>
+
+<!-- Main Content -->
+<div class="main">
+    <h1>Robotics Fundamentals</h1>
+
+    <section id="intro">
+        <h2>Introduction</h2>
+        <p>Robotics is the interdisciplinary branch of engineering and science that includes mechanical, electrical, and computer engineering. Robotics focuses on designing, constructing, operating, and using robots.</p>
+        <p>Modern robots are used in industrial automation, healthcare, military applications, exploration, and service tasks. The field combines mechanics, electronics, computer science, and artificial intelligence.</p>
+    </section>
+
+    <section id="types">
+        <h2>Types of Robots</h2>
+        <p>Robots are classified based on structure, motion, application, and autonomy.</p>
+        <ul>
+            <li><strong>Industrial Robots:</strong> Used in factories for welding, painting, assembly, and packaging.</li>
+            <li><strong>Service Robots:</strong> Assist humans in tasks like cleaning, delivery, or customer interaction.</li>
+            <li><strong>Humanoid Robots:</strong> Robots that resemble human form and behavior, often used for research or service.</li>
+            <li><strong>Autonomous Robots:</strong> Operate independently using sensors and AI, e.g., self-driving cars.</li>
+            <li><strong>Exploration Robots:</strong> Used in hazardous or remote locations, such as space or underwater.</li>
+        </ul>
+    </section>
+
+    <section id="components">
+        <h2>Components</h2>
+        <ul>
+            <li><strong>Mechanical Structure:</strong> The frame and body that form the robot’s shape and support.</li>
+            <li><strong>Actuators:</strong> Motors and devices that produce movement.</li>
+            <li><strong>Sensors:</strong> Detect environmental inputs like distance, light, or temperature.</li>
+            <li><strong>Control System:</strong> The “brain” of the robot, processing inputs and sending commands.</li>
+            <li><strong>Power Supply:</strong> Batteries or external power that drive actuators and electronics.</li>
+        </ul>
+    </section>
+
+
+    <section id="sensors">
+        <h2>Sensors</h2>
+        <p>Sensors allow robots to perceive and respond to the environment.</p>
+        <ul>
+            <li><strong>Proximity Sensors:</strong> Detect nearby objects using infrared, ultrasonic, or capacitive methods.</li>
+            <li><strong>Vision Sensors:</strong> Cameras and image processing to recognize objects, people, or patterns.</li>
+            <li><strong>Force Sensors:</strong> Measure physical contact or torque for manipulation tasks.</li>
+            <li><strong>Temperature Sensors:</strong> Monitor heat for safety or process control.</li>
+            <li><strong>Gyroscopes and Accelerometers:</strong> Detect orientation, balance, and motion.</li>
+        </ul>
+    </section>
+
+    <section id="actuators">
+        <h2>Actuators</h2>
+        <p>Actuators are responsible for moving parts of a robot.</p>
+        <ul>
+            <li><strong>Electric Motors:</strong> Convert electrical energy into rotational or linear motion.</li>
+            <li><strong>Hydraulic Actuators:</strong> Use pressurized fluid for high-force applications.</li>
+            <li><strong>Pneumatic Actuators:</strong> Use compressed air for light and fast movements.</li>
+        </ul>
+    </section>
+
+    <section id="control">
+        <h2>Control Systems</h2>
+        <p>Control systems manage robot behavior and movement:</p>
+        <ul>
+            <li><strong>Open-Loop Control:</strong> Actions occur without feedback; simple but less accurate.</li>
+            <li><strong>Closed-Loop Control:</strong> Feedback is used to adjust actions for precision and stability.</li>
+            <li><strong>AI-Based Control:</strong> Robots learn and adapt behavior using artificial intelligence.</li>
+        </ul>
+    </section>
+
+    <section id="kinematics">
+        <h2>Kinematics</h2>
+        <p>Kinematics studies motion without considering forces.</p>
+        <ul>
+            <li><strong>Forward Kinematics:</strong> Determines end-effector position based on joint angles.</li>
+            <li><strong>Inverse Kinematics:</strong> Calculates joint angles needed to reach a desired position.</li>
+        </ul>
+    </section>
+
+    <section id="dynamics">
+        <h2>Dynamics</h2>
+        <p>Dynamics considers forces and torques that produce motion.</p>
+        <p>It’s crucial for accurate motion, stability, and predicting the behavior of robots under load.</p>
+    </section>
+
+    <section id="programming">
+        <h2>Programming</h2>
+        <p>Robots are programmed to perform tasks autonomously.</p>
+        <ul>
+            <li><strong>Languages:</strong> Python, C++, Java, MATLAB.</li>
+            <li><strong>Frameworks:</strong> ROS (Robot Operating System), V-REP, Gazebo for simulation.</li>
+            <li><strong>Algorithms:</strong> Path planning, motion control, AI, computer vision.</li>
+        </ul>
+    </section>
+
+    <section id="applications">
+        <h2>Applications</h2>
+        <ul>
+            <li><strong>Manufacturing:</strong> Assembly lines, welding, packaging.</li>
+            <li><strong>Healthcare:</strong> Surgery, rehabilitation, eldercare.</li>
+            <li><strong>Exploration:</strong> Space, underwater, hazardous environments.</li>
+            <li><strong>Service:</strong> Delivery robots, cleaning robots, hospitality robots.</li>
+            <li><strong>Education:</strong> Teaching programming, AI, and mechanical concepts.</li>
+        </ul>
+    </section>
+    <section id="video lectures">
+        <h2>video lectures</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/NRj6gzah7JA?si=ne28EI_tollJTCmX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </section>
+    <button class="button-1" onclick="location.href='Robotics Home.html' " >
+        Home
+    </button>
+</div>
+
+
+<!-- Background Floating Robot Images -->
+<img src="https://cdn-icons-png.flaticon.com/512/391/391005.png" class="bg-img" style="top:100px; left:600px; width:150px; animation-duration:18s;">
+
+
+</body>
+</html>
